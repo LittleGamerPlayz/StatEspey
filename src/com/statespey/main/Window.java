@@ -13,9 +13,9 @@ public class Window {
 		window.frame.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\icon.png"));
 		window.frame.setVisible(true);
 		window.frame.setResizable(false);
-		window.frame.setTitle("StatEspey - Viral Video Tracker for Instagram");
-		window.frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		window.frame.setAlwaysOnTop(true); 
+		window.frame.setTitle("StatEspey - Viral Media Tracker for Instagram");
+		window.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		window.frame.setAlwaysOnTop(true);
 
 	}
 }
