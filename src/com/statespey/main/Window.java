@@ -15,6 +15,7 @@ public class Window {
 		window.frame.setResizable(false);
 		window.frame.setTitle("StatEspey - Viral Media Tracker for Instagram");
 		window.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		window.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.frame.setAlwaysOnTop(true);
 
 	}
