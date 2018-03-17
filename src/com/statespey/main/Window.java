@@ -4,8 +4,11 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
-public class Window {
+import com.statespey.main.graphics.InstagramPosts;
 
+public class Window extends InstagramPosts {
+	private static final long serialVersionUID = 1L;
+	
 	JFrame frame = new JFrame();
 
 	public static void main(String[] args) {
@@ -17,6 +20,7 @@ public class Window {
 		window.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		window.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.frame.setAlwaysOnTop(true);
+		window.frame.add(window);
 
 	}
 }

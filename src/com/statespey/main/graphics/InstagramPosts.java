@@ -1,19 +1,24 @@
 package com.statespey.main.graphics;
 
 import java.awt.Graphics;
+import java.util.List;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import org.jinstagram.Instagram;
+import org.jinstagram.entity.users.feed.MediaFeed;
+import org.jinstagram.entity.users.feed.MediaFeedData;
+import org.jinstagram.exceptions.InstagramException;
+
 public class InstagramPosts extends JPanel {
 	private static final long serialVersionUID = 1L;
-	
+
+	static Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3","3f653e4d103646a8acda64598fa7cf21");
 	BufferedImage image;
 
-	// might not work, I am a bit of a trial and error coder
-	// but let's see
 	public InstagramPosts() {
 		try {
 			image = ImageIO.read(InstagramPosts.class.getResourceAsStream("/test.png"));
@@ -24,19 +29,25 @@ public class InstagramPosts extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
-		// g is the surface you draw on
-		// if superclass has additional draw stuff)
-		super.paintComponent(g); // in case background etc is drawn
+		super.paintComponent(g);
 		if (image != null) {
 			g.drawImage(image, 0, 0, this);
 		}
 	}
-	
+
 	public static void main(String[] argv) {
 		InstagramPosts ip = new InstagramPosts();
+		
+        MediaFeed feed = null;
+		try {
+			feed = instagram.getRecentMediaFeedTags("fashion");
+		} catch (InstagramException e) {
+			e.printStackTrace();
+		}
 
-		System.out.println(ip.image.getHeight());
-		System.out.println(ip.image.getWidth());
-
+		List<MediaFeedData> feedDataList = feed.getData();
+		for (MediaFeedData data : feedDataList) {
+			data.getVideos();
+		}
 	}
 }
