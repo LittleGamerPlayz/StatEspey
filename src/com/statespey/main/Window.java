@@ -1,12 +1,13 @@
 package com.statespey.main;
 
+import java.awt.Canvas;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
 import com.statespey.main.graphics.InstagramPosts;
 
-public class Window extends InstagramPosts {
+public class Window extends Canvas {
 	private static final long serialVersionUID = 1L;
 	
 	JFrame frame = new JFrame();
