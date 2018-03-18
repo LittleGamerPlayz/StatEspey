@@ -1,6 +1,6 @@
 package com.statespey.main.graphics;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -24,17 +24,27 @@ public class InstagramPosts extends JPanel {
 
 	@SuppressWarnings("null")
 	public InstagramPosts() {
+		image = null;
+	}
+
+	public void loadImage() {
 		try {
-			MediaFeed feed = null;
+			MediaFeed feed = instagram.getUserRecentMedia();
 			List<MediaFeedData> feedDataList = feed.getData();
 			for (MediaFeedData data : feedDataList) {
 				Images images = data.getImages();
 				URL url = new URL(images.getStandardResolution().getImageUrl());
-				ImageIO.read(url);
+				image = ImageIO.read(url);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				validate();
+			}
+		});
 	}
 
 	public void paintComponent(Graphics g) {
