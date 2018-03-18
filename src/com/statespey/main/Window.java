@@ -1,27 +1,29 @@
 package com.statespey.main;
 
-import java.awt.Canvas;
-import java.awt.Toolkit;
+import java.awt.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import com.statespey.main.graphics.InstagramPosts;
 
-public class Window extends Canvas {
-	private static final long serialVersionUID = 1L;
-	
+public class Window  {
 	JFrame frame = new JFrame();
 
 	public static void main(String[] args) {
+
 		Window window = new Window();
 		window.frame.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\icon.png"));
 		window.frame.setVisible(true);
-		window.frame.setResizable(false);
+		window.frame.setResizable(true);
 		window.frame.setTitle("StatEspey - Viral Media Tracker for Instagram");
 		window.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		window.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.frame.setAlwaysOnTop(true);
-		window.frame.add(window);
 
+		InstagramPosts ip = new InstagramPosts();
+		ip.loadImage();
+		window.frame.setLayout(new BorderLayout());
+		window.frame.add(ip, BorderLayout.CENTER);
+		window.frame.revalidate();
 	}
 }

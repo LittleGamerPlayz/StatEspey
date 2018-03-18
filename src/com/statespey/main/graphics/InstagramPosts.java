@@ -1,6 +1,6 @@
 package com.statespey.main.graphics;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -18,23 +18,31 @@ import org.jinstagram.exceptions.InstagramException;
 public class InstagramPosts extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	static Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3",
-			"3f653e4d103646a8acda64598fa7cf21");
+	static Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3","3f653e4d103646a8acda64598fa7cf21");
 	BufferedImage image;
 
-	@SuppressWarnings("null")
 	public InstagramPosts() {
+		image = null;
+	}
+
+	public void loadImage() {
 		try {
-			MediaFeed feed = null;
+			MediaFeed feed = instagram.getUserRecentMedia();
 			List<MediaFeedData> feedDataList = feed.getData();
 			for (MediaFeedData data : feedDataList) {
 				Images images = data.getImages();
 				URL url = new URL(images.getStandardResolution().getImageUrl());
-				ImageIO.read(url);
+				image = ImageIO.read(url);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				validate();
+			}
+		});
 	}
 
 	public void paintComponent(Graphics g) {
