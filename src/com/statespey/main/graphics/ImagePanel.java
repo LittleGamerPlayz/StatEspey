@@ -13,12 +13,12 @@ public class ImagePanel extends JPanel {
 			"3f653e4d103646a8acda64598fa7cf21");
 	BufferedImage image;
 
-	public void setImage(BufferedImage image) {
+	public void setImage(BufferedImage newImage)  {
+		this.image = newImage;
 		
 	}
 	
 	public ImagePanel() {
-		image = null;
 		
 	}
 	
