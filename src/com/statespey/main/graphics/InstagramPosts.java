@@ -19,6 +19,7 @@ public class InstagramPosts extends JPanel {
 
 	public InstagramPosts() {
 		image = null;
+		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -43,7 +44,7 @@ public class InstagramPosts extends JPanel {
 			System.out.println(i++);
 			data.getImages();
 			data.getVideos();
-
+				
+			}
 		}
-	}
 }
