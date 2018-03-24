@@ -47,7 +47,7 @@ public class StatEspey extends JPanel {
 		
 		window.frame.add(window.label[0]);
 		window.frame.add(window.label[1]);
-
+		
 		window.frame.pack();
 		window.frame.revalidate();
 		
