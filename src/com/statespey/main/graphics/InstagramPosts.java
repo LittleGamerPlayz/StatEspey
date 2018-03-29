@@ -1,7 +1,8 @@
 package com.statespey.main.graphics;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -13,19 +14,12 @@ import org.jinstagram.Instagram;
 import org.jinstagram.entity.common.Images;
 import org.jinstagram.entity.users.feed.MediaFeed;
 import org.jinstagram.entity.users.feed.MediaFeedData;
-import org.jinstagram.exceptions.InstagramException;
 
 public class InstagramPosts extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	static Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3",
-			"3f653e4d103646a8acda64598fa7cf21");
-	BufferedImage image;
-
-	@SuppressWarnings("null")
-	public InstagramPosts() {
-		image = null;
-	}
+	Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3", "3f653e4d103646a8acda64598fa7cf21");
+	Image[] image = new Image[12];
 
 	public void loadImage() {
 		try {
@@ -34,7 +28,18 @@ public class InstagramPosts extends JPanel {
 			for (MediaFeedData data : feedDataList) {
 				Images images = data.getImages();
 				URL url = new URL(images.getStandardResolution().getImageUrl());
-				image = ImageIO.read(url);
+				image[0] = ImageIO.read(url);
+				image[1] = ImageIO.read(url);
+				image[2] = ImageIO.read(url);
+				image[3] = ImageIO.read(url);
+				image[4] = ImageIO.read(url);
+				image[5] = ImageIO.read(url);
+				image[6] = ImageIO.read(url);
+				image[7] = ImageIO.read(url);
+				image[8] = ImageIO.read(url);
+				image[9] = ImageIO.read(url);
+				image[10] = ImageIO.read(url);
+				image[11] = ImageIO.read(url);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -49,28 +54,20 @@ public class InstagramPosts extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (image != null) {
-			g.drawImage(image, 0, 0, this);
-		}
-	}
-
-	public static void main(String[] argv) {
-		MediaFeed feed = null;
-		try {
-			feed = instagram.getUserRecentMedia();
-		} catch (InstagramException e) {
-			e.printStackTrace();
-
-		}
-
-		List<MediaFeedData> feedDataList = feed.getData();
-		int i = 0;
-		for (MediaFeedData data : feedDataList) {
-			System.out.println(i++);
-			Images images = data.getImages();
-			System.out.println(images.getStandardResolution().getImageUrl());
-
-			System.out.println(data.getCaption());
-		}
+		// FIRST ROW
+		g.drawImage(image[0], 0, 0, 200, 200, this);
+		g.drawImage(image[1], 200, 0, 200, 200, this);
+		g.drawImage(image[2], 400, 0, 200, 200, this);
+		g.drawImage(image[3], 600, 0, 200, 200, this);
+		// SECOND ROW
+		g.drawImage(image[4], 0, 200, 200, 200, this);
+		g.drawImage(image[5], 200, 200, 200, 200, this);
+		g.drawImage(image[6], 400, 200, 200, 200, this);
+		g.drawImage(image[7], 600, 200, 200, 200, this);
+		// THIRD ROW
+		g.drawImage(image[8], 0, 400, 200, 200, this);
+		g.drawImage(image[9], 200, 400, 200, 200, this);
+		g.drawImage(image[10], 400, 400, 200, 200, this);
+		g.drawImage(image[11], 600, 400, 200, 200, this);
 	}
 }

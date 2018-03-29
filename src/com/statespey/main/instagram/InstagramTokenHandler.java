@@ -1,4 +1,4 @@
-package com.statespey.main;
+package com.statespey.main.instagram;
 
 import org.jinstagram.Instagram;
 import org.jinstagram.auth.model.Token;
