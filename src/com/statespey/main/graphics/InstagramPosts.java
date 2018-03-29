@@ -19,7 +19,7 @@ public class InstagramPosts extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3", "3f653e4d103646a8acda64598fa7cf21");
-	Image[] image = new Image[12];
+	Image[] image = new Image[16];
 
 	public void loadImage() {
 		try {
@@ -40,6 +40,7 @@ public class InstagramPosts extends JPanel {
 				image[9] = ImageIO.read(url);
 				image[10] = ImageIO.read(url);
 				image[11] = ImageIO.read(url);
+				image[12] = ImageIO.read(url);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -69,5 +70,7 @@ public class InstagramPosts extends JPanel {
 		g.drawImage(image[9], 200, 400, 200, 200, this);
 		g.drawImage(image[10], 400, 400, 200, 200, this);
 		g.drawImage(image[11], 600, 400, 200, 200, this);
+		// FOURTH ROW
+		g.drawImage(image[12], 0, 600, 200, 200, this);
 	}
 }
