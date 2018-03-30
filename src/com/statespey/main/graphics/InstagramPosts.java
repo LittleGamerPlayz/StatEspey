@@ -41,6 +41,9 @@ public class InstagramPosts extends JPanel {
 				image[10] = ImageIO.read(url);
 				image[11] = ImageIO.read(url);
 				image[12] = ImageIO.read(url);
+				image[13] = ImageIO.read(url);
+				image[14] = ImageIO.read(url);
+				image[15] = ImageIO.read(url);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -72,5 +75,8 @@ public class InstagramPosts extends JPanel {
 		g.drawImage(image[11], 600, 400, 200, 200, this);
 		// FOURTH ROW
 		g.drawImage(image[12], 0, 600, 200, 200, this);
+		g.drawImage(image[13], 200, 600, 200, 200, this);
+		g.drawImage(image[14], 400, 600, 200, 200, this);
+		g.drawImage(image[15], 600, 600, 200, 200, this);
 	}
 }

@@ -1,37 +1,29 @@
 package com.statespey.main;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import com.statespey.main.graphics.InstagramPosts;
 
-public class StatEspey {
-
-	public final static int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-	public final static int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-
-	JFrame frame = new JFrame();
-	Image[] image;
+public class StatEspey extends Canvas {
+	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
-		StatEspey window = new StatEspey();
+		JFrame frame = new JFrame();
 		InstagramPosts ip = new InstagramPosts();
+		JScrollPane jsp = new JScrollPane(ip, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		jsp.setBounds(5, 5, 200, 300);
 		ip.loadImage();
-		JScrollPane scroll = new JScrollPane(ip);
-		scroll.getViewport().setPreferredSize(new Dimension(800, 640));
-		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		window.frame.getContentPane().setLayout(new FlowLayout());
-		window.frame.add(scroll);
-		window.frame.pack();
-		window.frame.setTitle("StatEspey - Viral Media Tracker for Instagram");
-		window.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.frame.setVisible(true);
-		window.frame.setResizable(false);
+		frame.setLayout(new BorderLayout());
+		frame.setTitle("StatEspey");
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.setSize(825, 630);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.add(jsp);
 	}
 }
