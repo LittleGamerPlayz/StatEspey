@@ -25,7 +25,7 @@ public class InstagramPosts extends JPanel {
 		try {
 			MediaFeed feed = instagram.getUserRecentMedia();
 			List<MediaFeedData> feedDataList = feed.getData();
-			for (MediaFeedData data : feedDataList) {
+			for (MediaFeedData data : feedDataList) { 
 				Images images = data.getImages();
 				URL url = new URL(images.getStandardResolution().getImageUrl());
 				image[0] = ImageIO.read(url);

@@ -15,7 +15,6 @@ public class StatEspey extends Canvas {
 		JFrame frame = new JFrame();
 		InstagramPosts ip = new InstagramPosts();
 		JScrollPane jsp = new JScrollPane(ip, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		jsp.setBounds(5, 5, 200, 300);
 		ip.loadImage();
 		frame.setLayout(new BorderLayout());
 		frame.setTitle("StatEspey");
@@ -24,6 +23,6 @@ public class StatEspey extends Canvas {
 		frame.setSize(825, 630);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
-		frame.add(jsp);
+		frame.add(jsp);	
 	}
 }
