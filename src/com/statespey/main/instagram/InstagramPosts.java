@@ -126,7 +126,7 @@ public class InstagramPosts extends JPanel {
 		g.drawImage(image[57], 200, 2800, 200, 200, this);
 		g.drawImage(image[58], 400, 2800, 200, 200, this);
 		g.drawImage(image[59], 600, 2800, 200, 200, this);
-		// SIXTH ROW
+
 		g.drawImage(image[60], 0, 3000, 200, 200, this);
 		g.drawImage(image[61], 200, 3000, 200, 200, this);
 		g.drawImage(image[62], 400, 3000, 200, 200, this);
