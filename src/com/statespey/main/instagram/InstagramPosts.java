@@ -35,7 +35,7 @@ public class InstagramPosts extends JPanel {
 				int likeCount = likes.getCount();
 				
 				Random random = new Random();
-				int randomNum = random.getInt(feedDataList.size());
+				int randomNum = random.nextInt(feedDataList.size());
 				String mediaId = mediaData.getId();
 
 				mediaFeed = instagram.getUserRecentMedia(likeCount, mediaId, mediaId);
