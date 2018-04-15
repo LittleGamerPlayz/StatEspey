@@ -2,6 +2,7 @@ package com.statespey.main;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,7 +13,7 @@ import com.statespey.main.instagram.InstagramPosts;
 public class StatEspey extends Canvas {
 	private static final long serialVersionUID = 1L;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		JFrame frame = new JFrame();
 		InstagramPosts ip = new InstagramPosts();
 		JScrollPane jsp = new JScrollPane(ip, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

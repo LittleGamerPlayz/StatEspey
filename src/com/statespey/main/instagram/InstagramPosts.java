@@ -7,38 +7,55 @@ import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import org.jinstagram.Instagram;
+import org.jinstagram.entity.common.Comments;
 import org.jinstagram.entity.common.Images;
 import org.jinstagram.entity.common.Likes;
+import org.jinstagram.entity.users.basicinfo.Counts;
+import org.jinstagram.entity.users.basicinfo.UserInfo;
+import org.jinstagram.entity.users.basicinfo.UserInfoData;
 import org.jinstagram.entity.users.feed.MediaFeed;
 import org.jinstagram.entity.users.feed.MediaFeedData;
 
 public class InstagramPosts extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3","3f653e4d103646a8acda64598fa7cf21");
+	Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3", "3f653e4d103646a8acda64598fa7cf21");
 	Image[] image = new Image[80];
+	int count = 0;
 
-	public void loadImage() {
-		try {
-			MediaFeed mediaFeed = instagram.getUserRecentMedia();
-			List<MediaFeedData> feedDataList = mediaFeed.getData();
-			for (MediaFeedData data : feedDataList) {
+	public void loadImage() throws IOException {
+		MediaFeed mediaFeed = instagram.getUserRecentMedia();
+		List<MediaFeedData> mediaFeeds = mediaFeed.getData();
 
-				Images images = data.getImages();
-				URL url = new URL(images.getStandardResolution().getImageUrl());
+		MediaFeedData mediaData = mediaFeeds.get(count);
+		String mediaId = mediaData.getId();
+		String type = mediaData.getType();
+		String tags = mediaData.getTags().toString();
+	
+		Comments comments = mediaData.getComments();
+		int commentCount = comments.getCount();
 
-				for (int i = 0; i <= image.length - 1; i++) {
-					image[i] = ImageIO.read(url);
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		Likes likes = mediaData.getLikes();
+		int likeCount = likes.getCount();
+
+		System.out.println();
+		System.out.println("MediaID : " + mediaId);
+		System.out.println("Media Type : " + type);
+		System.out.println("Tags : " + tags);
+		System.out.println("Comment Count : " + commentCount);
+		System.out.println("Like Count : " + likeCount);
+		System.out.println();
+		
+		Images images = mediaData.getImages();
+		URL url = new URL(images.getStandardResolution().getImageUrl());
+
+		for (int i = 0; i <= image.length - 1; i++) {
+			image[i] = ImageIO.read(url);
 		}
 
 		EventQueue.invokeLater(new Runnable() {
@@ -141,12 +158,12 @@ public class InstagramPosts extends JPanel {
 		g.drawImage(image[69], 200, 3400, 200, 200, this);
 		g.drawImage(image[70], 400, 3400, 200, 200, this);
 		g.drawImage(image[71], 600, 3400, 200, 200, this);
-		
+
 		g.drawImage(image[72], 0, 3600, 200, 200, this);
 		g.drawImage(image[73], 200, 3600, 200, 200, this);
 		g.drawImage(image[74], 400, 3600, 200, 200, this);
 		g.drawImage(image[75], 600, 3600, 200, 200, this);
-		
+
 		g.drawImage(image[76], 0, 3800, 200, 200, this);
 		g.drawImage(image[77], 200, 3800, 200, 200, this);
 		g.drawImage(image[78], 400, 3800, 200, 200, this);
