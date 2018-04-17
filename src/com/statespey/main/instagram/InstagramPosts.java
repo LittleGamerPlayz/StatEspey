@@ -12,12 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import org.jinstagram.Instagram;
-import org.jinstagram.entity.common.Comments;
 import org.jinstagram.entity.common.Images;
-import org.jinstagram.entity.common.Likes;
-import org.jinstagram.entity.users.basicinfo.Counts;
-import org.jinstagram.entity.users.basicinfo.UserInfo;
-import org.jinstagram.entity.users.basicinfo.UserInfoData;
 import org.jinstagram.entity.users.feed.MediaFeed;
 import org.jinstagram.entity.users.feed.MediaFeedData;
 
@@ -26,31 +21,13 @@ public class InstagramPosts extends JPanel {
 
 	Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3", "3f653e4d103646a8acda64598fa7cf21");
 	Image[] image = new Image[80];
-	int count = 0;
 
 	public void loadImage() throws IOException {
 		MediaFeed mediaFeed = instagram.getUserRecentMedia();
 		List<MediaFeedData> mediaFeeds = mediaFeed.getData();
 
-		MediaFeedData mediaData = mediaFeeds.get(count);
-		String mediaId = mediaData.getId();
-		String type = mediaData.getType();
-		String tags = mediaData.getTags().toString();
-	
-		Comments comments = mediaData.getComments();
-		int commentCount = comments.getCount();
+		MediaFeedData mediaData = mediaFeeds.get(0);
 
-		Likes likes = mediaData.getLikes();
-		int likeCount = likes.getCount();
-
-		System.out.println();
-		System.out.println("MediaID : " + mediaId);
-		System.out.println("Media Type : " + type);
-		System.out.println("Tags : " + tags);
-		System.out.println("Comment Count : " + commentCount);
-		System.out.println("Like Count : " + likeCount);
-		System.out.println();
-		
 		Images images = mediaData.getImages();
 		URL url = new URL(images.getStandardResolution().getImageUrl());
 
