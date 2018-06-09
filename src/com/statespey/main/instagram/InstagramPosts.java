@@ -21,18 +21,22 @@ public class InstagramPosts extends JPanel {
 
 	Instagram instagram = new Instagram("4189671200.d4afd14.681cdec170d8456fa29e32f4aaa047f3", "3f653e4d103646a8acda64598fa7cf21");
 	Image[] image = new Image[80];
+	MediaFeedData[] mediaData = new MediaFeedData[80];
+	
+	Random r = new Random();
+	int randomNum = r.nextInt(3) + 0;
 
 	public void loadImage() throws IOException {
 		MediaFeed mediaFeed = instagram.getUserRecentMedia();
 		List<MediaFeedData> mediaFeeds = mediaFeed.getData();
-
-		MediaFeedData mediaData = mediaFeeds.get(0);
 
 		Images images = mediaData.getImages();
 		URL url = new URL(images.getStandardResolution().getImageUrl());
 
 		for (int i = 0; i <= image.length - 1; i++) {
 			image[i] = ImageIO.read(url);
+			
+			mediaData[i] = mediaFeeds.get(randomNum);
 		}
 
 		EventQueue.invokeLater(new Runnable() {
